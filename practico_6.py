@@ -45,10 +45,6 @@ Restricciones
 - Escribir código claro y legible
 """
 #Codigo
-Class
-#hola esto se sube
 
-def hola(n):
-    print('nidea')
 
     
