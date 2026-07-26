@@ -90,5 +90,59 @@ class Punto:
 
 #ejercicio 3
 #codigo
+import math
+class Empleado:
+    def __init__(self, nombre, sueldo_base):
+      assert type(nombre) == str, ' debe ingresar una cadena de caracteres (nombre)'
+      assert type(sueldo_base)== int or type(sueldo_base)== float and sueldo_base >=0, ' debe ingresar un numero entero positivo(sueldo)'
+      self.nombre= nombre
+      self._sueldo_base= sueldo_base #protegido
+      self.__bonificaciones = [] #privado
+
+    def get_suelto_total(self)-> float:
+      return self._sueldo_base + sum(self.__bonificaciones)
+
+    def get_bonificacion_maxima(self):
+        assert len(self.__bonificaciones)> 0, ' no hay bonificaciones registradas'
+        return max(self.__bonificaciones)
+
+    def get_bonificacion_minima(self)-> float:
+      assert len(self.__bonificaciones)>0, ' debe ingresar una lista de bonificaciones que al menos contenga un monto'
+      return min(self.__bonificaciones)
+    
+    def get_tiene_bonificaciones(self) -> bool:
+      return len(self.__bonificaciones)>0
+      
+    def ver_bonificaciones(self) ->list:
+        return self.__bonificaciones.copy()
+    
+    def agregar_bonificacion(self, monto):
+        assert type(monto) == int or type(monto) == float
+        assert monto > 0
+        self.__bonificaciones.append(monto)
+
+#hay que agregar la lista de empleados como ejemplo.
+
+#Ejercicio 4
+class Libro:
+    def __init__(self, titulo, autor, anio):
+        assert type(anio)== int and anio >0, ' debe ingresar un numero positivo como año'
+        assert type(autor)== str and type(titulo)== str, 'autor y titulo deben ser una cadena de caracteres'
+        
+        self.tiulo = titulo
+        self.autor= autor
+        self.anio= anio
+        self._disponible = True
+    def estar_disponible(self)->bool:
+        return self._disponible
+    def prestar(self):
+        assert self._disponible == True, 'el libro no esta disponible'
+        self._disponible = False
+    def devolver(self):
+        assert self._disponible != True, 'el libro ya esta disponible'
+        self._disponible = True
+    def __str__(self):
+        return f'Titulo:{self.titulo}| Autor: {self.autor}| Disponible: {self._disponible} '
+    
 
     
