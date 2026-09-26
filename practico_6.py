@@ -129,7 +129,7 @@ class Libro:
         assert type(anio)== int and anio >0, ' debe ingresar un numero positivo como año'
         assert type(autor)== str and type(titulo)== str, 'autor y titulo deben ser una cadena de caracteres'
         
-        self.tiulo = titulo
+        self.titulo = titulo
         self.autor= autor
         self.anio= anio
         self._disponible = True
@@ -143,6 +143,56 @@ class Libro:
         self._disponible = True
     def __str__(self):
         return f'Titulo:{self.titulo}| Autor: {self.autor}| Disponible: {self._disponible} '
-    
+
+""""
+AGREGAR LOS EJEMPLOS Y/O TESTS
+"""
+
+#Ejercicio 5
+""""
+nota personal: en este caso no se habla de una herencia
+estamos en el caso de una composición; una clase tiene objetos de otra
+Biblioteca administra los libros una vez que ya existen
+"""""
+class Biblioteca:
+    def __init__(self):
+        self._libros = []
+    def agregar_libro(self, libro):
+        assert isinstance(libro, Libro), 'el objeto debe ser un Libro'
+        for l in self._libros:
+            if l.titulo == libro.titulo and l.autor == libro.autor:
+                raise ValueError ('el libro ya existe en la biblioteca')
+        self._libros.append(libro)
+    def prestar_libro(self,titulo):
+        for l in self._libros:
+            if l.titulo == titulo:
+                l.prestar()
+                return
+            raise ValueError ('el libro no existe en la biblioteca')
+        
+    def devolver_libro(self, titulo):
+        libro = self.buscar_libro(titulo)
+        libro.devolver()
+
+    def libros_disponibles(self):
+        disponibles = []
+        for l in self._libros:
+            if l.estar_disponible():
+                disponibles.append(l)
+        return disponibles
+
+    def cantidad_libros(self):
+        return len(self._libros)
+
+    def __str__(self): #se debe ver como el print que le pido
+        total = self.cantidad_libros()
+        disponibles = len(self.libros_disponibles())
+        return f'Biblioteca con {total} libros ({disponibles} disponibles)'
+            
+
+
+
+
+
 
     
