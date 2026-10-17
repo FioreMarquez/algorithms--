@@ -95,3 +95,69 @@ def suma_n(n):
     return suma 
 
 print(suma_n(3))
+
+#ejercicio 12 
+""" se introduce la notacion type hints.
+ocurre que esta no se verifica automaticamente en la ejecion del programa
+tenemos que verificar los argumentos de forma explicita
+dentro de la fnción """
+
+#ejercicio 13
+"""se implementa la funcion que evalue 
+f(x) = ax + b"""
+
+def evaluar_lineal(a : float, b:float, x:float)-> float:
+    isinstance(a,(float,int))
+    isinstance(b, (float,int))
+    isinstance(x,(float,int))
+    return a * x + b
+
+#ejercicio 14
+# Codigo
+def vertice_parabola(a :float, b:float, c:float) -> tuple:
+   assert a > 0 or a < 0, 'a debe ser distinto de cero'
+   xv = - b/(2*a)
+   yv = a * xv ** 2  + b * xv + c
+
+   return xv, yv
+
+
+
+#ejercicio 28
+
+x = 10 #variable global
+
+def f():
+    x = 5 #variable local que tapa la global mientras se ejecuta la funcion
+    return x
+resultado = f()
+
+print("resultado:", resultado)
+print("x global:", x)
+
+"""aca la variable dentro de la funcion no modifica la global
+porque"""
+
+
+
+#ejercicio 29
+
+def externa():
+    x = 3
+
+    def interna():
+        return x*2
+    return interna() #devuelve 6
+
+''' externa es f(g(x)) siendo interna = g(x)
+ x es variable local para externa = f(x)
+ x es envolvente
+ '''
+#ahora se modifica para que devuelva x*y
+def externa():
+    x = 3
+    def interna(y):
+        return x * y
+    return interna(2)
+
+externa()   # 6
