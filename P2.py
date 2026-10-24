@@ -121,7 +121,61 @@ def vertice_parabola(a :float, b:float, c:float) -> tuple:
 
    return xv, yv
 
+#Ejercicio 15
+import math
+def pitagoras(a:float, b:float)-> float:
+    assert type(a)==type(b)== int and a>0 and b>0, 'debe ingresar numeros enteros positivos'
+    c = math.sqrt(a**2 + b**2)
+    return c
+print(pitagoras(2,2))
 
+#Ejercicio 16
+
+
+#----Funciones lambda----
+#Ejercicio 22
+""" definir una funcion lambda que reciba un número
+y devuelva su cubo."""
+
+cubo = lambda x: x**3
+print(cubo(2))
+print(cubo(3))
+
+#Ejercicio 23
+""" definir una función lambda que reciba dos numeros
+y devuelva el mayor de ambos"""
+
+nro_mayor= lambda x,y: max(x,y)
+print(nro_mayor(2,3))
+print(nro_mayor(5,6))
+
+#Ejercicio 24
+"""Definir una función lambda que calcule el doble de un 
+numero 2x, x representa el valor de angulo en grados, por lo que hay que
+hacer el pase a radianes"""
+""" definir uotra que calcule sin(x) y combinarlas para obtener
+una funcion que calcule sin(2x)"""
+
+import math
+
+doble = lambda x: 2 * (x * math.pi/180)
+seno = lambda x : math.sin(x)
+seno_doble = lambda doble: math.sin(doble)
+
+#Ejercicio 26
+""" escribir una funcion factorial(n) que reciba un unico argumento
+y devuelva el factorial de n """
+
+def factorial(n):
+    assert type(n) == int and n >= 0, 'debe ingresar un entero mayor o igual que cero'
+    fact = 1
+    for i in range(1, n+1):
+        fact = fact * i
+    return fact
+
+inverso_factorial = lambda n: 1/factorial(n)
+
+#Ejericio 28
 
 #ejercicio 28
 
