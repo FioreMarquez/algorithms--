@@ -95,3 +95,123 @@ def suma_n(n):
     return suma 
 
 print(suma_n(3))
+
+#ejercicio 12 
+""" se introduce la notacion type hints.
+ocurre que esta no se verifica automaticamente en la ejecion del programa
+tenemos que verificar los argumentos de forma explicita
+dentro de la fnción """
+
+#ejercicio 13
+"""se implementa la funcion que evalue 
+f(x) = ax + b"""
+
+def evaluar_lineal(a : float, b:float, x:float)-> float:
+    isinstance(a,(float,int))
+    isinstance(b, (float,int))
+    isinstance(x,(float,int))
+    return a * x + b
+
+#ejercicio 14
+# Codigo
+def vertice_parabola(a :float, b:float, c:float) -> tuple:
+   assert a > 0 or a < 0, 'a debe ser distinto de cero'
+   xv = - b/(2*a)
+   yv = a * xv ** 2  + b * xv + c
+
+   return xv, yv
+
+#Ejercicio 15
+import math
+def pitagoras(a:float, b:float)-> float:
+    assert type(a)==type(b)== int and a>0 and b>0, 'debe ingresar numeros enteros positivos'
+    c = math.sqrt(a**2 + b**2)
+    return c
+print(pitagoras(2,2))
+
+#Ejercicio 16
+
+
+#----Funciones lambda----
+#Ejercicio 22
+""" definir una funcion lambda que reciba un número
+y devuelva su cubo."""
+
+cubo = lambda x: x**3
+print(cubo(2))
+print(cubo(3))
+
+#Ejercicio 23
+""" definir una función lambda que reciba dos numeros
+y devuelva el mayor de ambos"""
+
+nro_mayor= lambda x,y: max(x,y)
+print(nro_mayor(2,3))
+print(nro_mayor(5,6))
+
+#Ejercicio 24
+"""Definir una función lambda que calcule el doble de un 
+numero 2x, x representa el valor de angulo en grados, por lo que hay que
+hacer el pase a radianes"""
+""" definir uotra que calcule sin(x) y combinarlas para obtener
+una funcion que calcule sin(2x)"""
+
+import math
+
+doble = lambda x: 2 * (x * math.pi/180)
+seno = lambda x : math.sin(x)
+seno_doble = lambda doble: math.sin(doble)
+
+#Ejercicio 26
+""" escribir una funcion factorial(n) que reciba un unico argumento
+y devuelva el factorial de n """
+
+def factorial(n):
+    assert type(n) == int and n >= 0, 'debe ingresar un entero mayor o igual que cero'
+    fact = 1
+    for i in range(1, n+1):
+        fact = fact * i
+    return fact
+
+inverso_factorial = lambda n: 1/factorial(n)
+
+#Ejericio 28
+
+#ejercicio 28
+
+x = 10 #variable global
+
+def f():
+    x = 5 #variable local que tapa la global mientras se ejecuta la funcion
+    return x
+resultado = f()
+
+print("resultado:", resultado)
+print("x global:", x)
+
+"""aca la variable dentro de la funcion no modifica la global
+porque"""
+
+
+
+#ejercicio 29
+
+def externa():
+    x = 3
+
+    def interna():
+        return x*2
+    return interna() #devuelve 6
+
+''' externa es f(g(x)) siendo interna = g(x)
+ x es variable local para externa = f(x)
+ x es envolvente
+ '''
+#ahora se modifica para que devuelva x*y
+def externa():
+    x = 3
+    def interna(y):
+        return x * y
+    return interna(2)
+
+externa()   # 6
