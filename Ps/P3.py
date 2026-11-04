@@ -55,3 +55,33 @@ def sumatorio_2(n:int):
 
 
 #P3- Parte 2: Cadenas
+#Ejercicio 1.1
+def analizar_cadena1(cadena:str):
+    """recibe un string y devuelve la cantidad de caracteres, letras y números"""
+    caracteres= 0
+    digitos = 0
+    letras = 0
+    for i in cadena:
+        if i.isalpha():
+            letras = letras + 1
+        if i.isdigit():
+            digitos = digitos + 1
+        if i.isalnum():
+            caracteres = caracteres + 1
+    return letras, digitos, caracteres
+
+# Ejercicio 1.3
+def analizar_cadena3(cadena:str):
+    """ recibe una cadena y devuelve la cantidad de espacios"""
+    espacios = 0
+    for i in cadena:
+        if i == " ":
+            espacios = espacios + 1
+    return espacios
+
+#ejercicio 2
+def invertir_cadena(cadena:str):
+    cadena_invertida = ""
+    for i in cadena:
+        cadena_invertida = i + cadena_invertida
+    return cadena_invertida
